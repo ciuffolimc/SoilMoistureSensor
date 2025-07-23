@@ -1,0 +1,105 @@
+[
+    {
+        "id": "6988ee0a2408fddd",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "5e94c0825e2e866c",
+        "type": "udp in",
+        "z": "6988ee0a2408fddd",
+        "name": "",
+        "iface": "",
+        "port": "8888",
+        "ipv": "udp4",
+        "multicast": "false",
+        "group": "",
+        "datatype": "utf8",
+        "x": 260,
+        "y": 220,
+        "wires": [
+            [
+                "ebcc06976d52e333"
+            ]
+        ]
+    },
+    {
+        "id": "ebcc06976d52e333",
+        "type": "json",
+        "z": "6988ee0a2408fddd",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 430,
+        "y": 200,
+        "wires": [
+            [
+                "e45371910c93a5a2",
+                "63597793d8d3d0c3"
+            ]
+        ]
+    },
+    {
+        "id": "e45371910c93a5a2",
+        "type": "debug",
+        "z": "6988ee0a2408fddd",
+        "name": "debug 1",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 740,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "a9f7d94c67e1946f",
+        "type": "debug",
+        "z": "6988ee0a2408fddd",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 840,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "63597793d8d3d0c3",
+        "type": "mongodb3 in",
+        "z": "6988ee0a2408fddd",
+        "service": "_ext_",
+        "configNode": "4a06454bd3d8384c",
+        "name": "mongodb",
+        "collection": "sensorValue",
+        "operation": "insert",
+        "x": 640,
+        "y": 160,
+        "wires": [
+            [
+                "a9f7d94c67e1946f"
+            ]
+        ]
+    },
+    {
+        "id": "4a06454bd3d8384c",
+        "type": "mongodb3",
+        "uri": "mongodb+srv://progettohum123:progettohum123@cluster0.7svtqqv.mongodb.net/progettoHum?retryWrites=true&w=majority",
+        "name": "",
+        "options": "",
+        "parallelism": "-1"
+    }
+]
